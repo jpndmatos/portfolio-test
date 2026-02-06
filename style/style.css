@@ -1,3 +1,34 @@
+/* Experience tags, styled like project tags */
+.experience__tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-block-end: 20px;
+  text-align: left;
+}
+@media (max-width: 62.49875em) {
+  .experience__tags {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+.experience__tags span {
+  display: inline-block;
+  padding: 4px 14px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text1);
+  background-color: hsla(270, 60%, 55%, 0.15);
+  border: 1px solid hsla(270, 60%, 55%, 0.3);
+  border-radius: 100px;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+}
 .header__social--stroke svg {
   height: 24px;
   width: 24px;
@@ -107,10 +138,9 @@ h3 {
 }
 
 .header-xl {
-  font-size: 2rem;
-  font-size: clamp(2rem, 0.56rem + 6.14vw, 4.4rem);
-  letter-spacing: -0.028em;
-  line-height: 1.1;
+  font-size: 1.6rem;
+  font-size: clamp(1.8rem, 0.56rem + 6.14vw, 2.8rem);
+  line-height: 1.2;
 }
 
 p {
@@ -201,11 +231,14 @@ svg {
   z-index: 50;
   padding-block: 20px;
   margin: 0;
-  transition: background-color 0.2s ease;
+  transition:
+    background-color,
+    border-botom 0.2s ease;
 }
 
 .header.scrolled {
   background-color: var(--bg-body);
+  border-bottom: 1px solid var(--accent);
 }
 
 .header__nav {
@@ -277,7 +310,6 @@ svg {
   transition: fill var(--transition);
 }
 
-/* Mail icon uses stroke, not fill */
 .header__social--stroke svg path {
   fill: none;
   stroke: currentColor;
@@ -327,7 +359,7 @@ svg {
   height: 16px;
   background-color: var(--accent);
   border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-  animation: scroll-bounce 2.8s cubic-bezier(0.45, 0, 0.15, 1) infinite;
+  animation: scroll-bounce 3s cubic-bezier(0.45, 0, 0.15, 1) infinite;
 }
 
 @keyframes scroll-bounce {
@@ -649,7 +681,7 @@ h1 > span {
   font-size: 1rem;
   color: var(--text2);
   line-height: 1.6;
-  max-width: 50ch;
+  max-width: 70ch;
 }
 
 @media (min-width: 62.5em) {
@@ -1086,7 +1118,7 @@ footer {
 .side-nav__item span {
   writing-mode: vertical-rl;
   transform: rotate(180deg);
-  font-size: 0.65rem;
+  font-size: 0.69rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.18em;
