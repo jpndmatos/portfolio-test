@@ -470,7 +470,7 @@ h1 > span {
     left: auto;
     right: 0;
     translate: 0;
-    margin-block-start: -220px;
+    margin-block-start: -10px;
   }
 
   .hero__text {
