@@ -1,3 +1,34 @@
+/* Experience tags, styled like project tags */
+.experience__tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-block-end: 20px;
+  text-align: left;
+}
+@media (max-width: 62.49875em) {
+  .experience__tags {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+.experience__tags span {
+  display: inline-block;
+  padding: 4px 14px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text1);
+  background-color: hsla(270, 60%, 55%, 0.15);
+  border: 1px solid hsla(270, 60%, 55%, 0.3);
+  border-radius: 100px;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+}
 .header__social--stroke svg {
   height: 24px;
   width: 24px;
@@ -1086,7 +1117,7 @@ footer {
 .side-nav__item span {
   writing-mode: vertical-rl;
   transform: rotate(180deg);
-  font-size: 0.65rem;
+  font-size: 0.77rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.18em;
