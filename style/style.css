@@ -360,11 +360,11 @@ svg {
 }
 
 .hero__image {
-  position: absolute;
-  top: 140px;
-  left: 50%;
-  translate: -50%;
-  width: 340px;
+  position: relative;
+  display: block;
+  margin: 32px auto 24px auto;
+  width: 220px;
+  max-width: 80vw;
   height: auto;
   clip-path: url(#blob-clip);
   pointer-events: none;
@@ -374,11 +374,13 @@ svg {
 .hero__text {
   position: relative;
   text-align: center;
-  margin-block-start: 500px;
+  margin-block-start: 0;
+  margin-top: 0;
 }
 
 .hero__headline {
-  margin-block-end: 24px;
+  margin-block-end: 18px;
+  margin-block-start: 12px;
 }
 
 .hero__headline > br {
@@ -397,14 +399,15 @@ h1 > span {
 }
 
 .hero__description {
-  margin-block-end: 24px;
+  margin-block-end: 18px;
 }
 
 .hero__socials {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
   align-items: center;
+  margin-top: 18px;
 }
 
 .hero__social-link {
