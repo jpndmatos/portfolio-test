@@ -27,7 +27,6 @@
       </defs>
     </svg>
 
-    <!-- Vertical side navigation -->
     <nav class="side-nav" aria-label="Section navigation">
       <ul class="side-nav__list">
         <li class="side-nav__item active" data-section="hero">
@@ -62,13 +61,13 @@
                 viewBox="0 0 26 26"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="3"
+                stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 aria-labelledby="socialMail"
                 role="img">
                 <title id="socialMail">Email</title>
-                <rect width="23" height="19" x="2" y="4" rx="2" />
+                <rect width="21" height="18" x="2" y="4" rx="2" />
                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
               </svg>
             </a>
@@ -115,7 +114,7 @@
       </div>
     </header>
 
-    <main id="main">
+    </id="main">
       <section id="hero" class="hero">
         <div class="wrapper hero__wrapper">
           <div class="hero__content">
@@ -241,7 +240,7 @@
 
       <section id="skills" class="skills">
         <div class="wrapper skills__wrapper">
-          <h2 class="skills__headline header-xl">Skills</h2>
+          <h2 class="skills__headline skills__headline--spaced header__title">Skills</h2>
           <div class="skills__grid">
             <div class="skills__item">
               <h3 class="skills__title">HTML</h3>
@@ -292,11 +291,14 @@
               </div>
             </div>
             <div class="skills__item">
-              <h3 class="skills__title">Partir queridas</h3>
+              <h3 class="skills__title">NextJS</h3>
               <div class="skills__progress-bar">
                 <div class="skills__progress-fill" data-progress="69"></div>
               </div>
             </div>
+          </div>
+          <h3 class="skills__headline skills__headline--spaced header__title">Languages</h3>
+          <div class="skills__grid">
             <div class="skills__item">
               <h3 class="skills__title">Portuguese - Native</h3>
               <div class="skills__progress-bar">
@@ -316,7 +318,7 @@
               </div>
             </div>
           </div>
-          <h2 class="skills__headline header-xl">Experience</h2>
+          <h2 class="skills__headline skills__headline--spaced header__title" style="margin-block-start: 80px;">Experience</h2>
           <div class="experience__list">
             <div class="experience__item">
               <span class="experience__year">2023</span>
@@ -325,8 +327,8 @@
                 <p class="experience__description">
                   Creation of the company website using React + Tailwind and
                   TypeScript, with 3D elements implemented with ThreeJS, and its
-                  subsequent deployment.</br>3 month internship at Doppel (IPN
-                  Coimbra).
+                  subsequent deployment</br>3 month internship at Doppel (IPN
+                  Coimbra)
                 </p>
                 <div class="experience__tags">
                   <span>HTML</span>
@@ -345,7 +347,7 @@
                   EBEC Coimbra — Visual Identity Responsible
                 </h3>
                 <p class="experience__description">
-                  European BEST Engineering Competition
+                  European BEST Engineering Competition</br>Board of European Students of Technology
                 </p>
                 <div class="experience__tags">
                   <span>Event</span>
@@ -374,14 +376,16 @@
                   width-="343"
                   height="253" />
               </picture>
-              <h3 class="projects__name">Project 1</h3>
+              <h3 class="projects__name">Crimes Exemplares</h3>
+              <p class="projects__description">This project is an interactive digital experience inspired by Max Aub's book "Crimes Exemplares".</p>
               <p class="projects__tags">
                 <span>HTML</span>
                 <span>CSS</span>
+                <span>JavaScript</span>
               </p>
               <div class="projects__links">
-                <a href="" class="underline">View Project</a>
-                <a href="" class="underline">View Code</a>
+                <a href="https://jpndmatos.github.io/Crimes-Exemplares/" target="_blank" class="underline">View Project</a>
+                <a href="https://github.com/jpndmatos/Crimes-Exemplares" target="_blank" class="underline">View Code</a>
               </div>
             </div>
 
@@ -397,10 +401,14 @@
                   width-="343"
                   height="253" />
               </picture>
-              <h3 class="projects__name">Project 2</h3>
+              <h3 class="projects__name">Company Website</h3>
+              <p class="projects__description">Doppel website dupe.<br/>(Redacted to avoyd copyright infringement).</p>
               <p class="projects__tags">
-                <span>HTML</span>
-                <span>CSS</span>
+                <span>React</span>
+                <span>Tailwind</span>
+                <span>TypeScript</span>
+                <span>Threejs</span>
+                <span>Nextjs</span>
               </p>
               <div class="projects__links">
                 <a href="" class="underline">View Project</a>
@@ -420,8 +428,10 @@
                   width-="343"
                   height="253" />
               </picture>
-              <h3 class="projects__name">Project 3</h3>
+              <h3 class="projects__name">EatEasy</h3>
+              <p class="projects__description">Restaurant reservation platform using mock data with client and admin interfaces.</p>
               <p class="projects__tags">
+                <span>PHP</span>
                 <span>HTML</span>
                 <span>CSS</span>
                 <span>JavaScript</span>
@@ -444,11 +454,14 @@
                   width-="343"
                   height="253" />
               </picture>
-              <h3 class="projects__name">Project 4</h3>
+              <h3 class="projects__name">HDF5 Dashboard</h3>
+              <p class="projects__description">HDF5 data visualization dashboard using a Python Flask backend and a JavaScript frontend with Plotly for charting.</p>
               <p class="projects__tags">
                 <span>HTML</span>
                 <span>CSS</span>
                 <span>JavaScript</span>
+                <span>Python</span>
+                <span>Vite</span>
               </p>
               <div class="projects__links">
                 <a href="" class="underline">View Project</a>

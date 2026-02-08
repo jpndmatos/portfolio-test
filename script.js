@@ -1,6 +1,4 @@
-// ==========================================
-// FLUID ANIMATED BACKGROUND — WebGL Domain Warping
-// ==========================================
+// bg
 
 const fluidBackground = () => {
   const canvas = document.getElementById("fluid-bg");
@@ -17,19 +15,23 @@ const fluidBackground = () => {
     return;
   }
 
-  // --- Mouse tracking ---
+  // mousetrack
   let mouseX = 0.5;
   let mouseY = 0.5;
   let smoothMouseX = 0.5;
   let smoothMouseY = 0.5;
 
-  window.addEventListener('mousemove', (e) => {
-    // Normalize mouse position and clamp to avoid edges
-    mouseX = Math.max(0.2, Math.min(0.8, e.clientX / window.innerWidth));
-    mouseY = Math.max(0.2, Math.min(0.8, e.clientY / window.innerHeight));
-  }, { passive: true });
+  window.addEventListener(
+    "mousemove",
+    (e) => {
+      // normalizemousepos
+      mouseX = Math.max(0.2, Math.min(0.8, e.clientX / window.innerWidth));
+      mouseY = Math.max(0.2, Math.min(0.8, e.clientY / window.innerHeight));
+    },
+    { passive: true },
+  );
 
-  // --- Shaders ---
+  // shaders
 
   const vertexSource = `
     attribute vec2 a_position;
@@ -52,7 +54,7 @@ const fluidBackground = () => {
 
     float snoise(vec2 v) {
       const vec4 C = vec4(0.211324865405187, 0.366025403784439,
-                         -0.577350269189626, 0.024390243902439);
+        -0.577350269189626, 0.024390243902439);
       vec2 i  = floor(v + dot(v, C.yy));
       vec2 x0 = v - i + dot(i, C.xx);
       vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
@@ -130,7 +132,7 @@ const fluidBackground = () => {
     }
   `;
 
-  // --- Compile shaders ---
+  // compshaders
   const compileShader = (source, type) => {
     const shader = gl.createShader(type);
     gl.shaderSource(shader, source);
@@ -160,7 +162,7 @@ const fluidBackground = () => {
 
   gl.useProgram(program);
 
-  // --- Fullscreen quad ---
+  // fullscreenquad
   const vertices = new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]);
   const buffer = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
@@ -170,12 +172,12 @@ const fluidBackground = () => {
   gl.enableVertexAttribArray(aPosition);
   gl.vertexAttribPointer(aPosition, 2, gl.FLOAT, false, 0, 0);
 
-  // --- Uniforms ---
+  // uniforms
   const uTime = gl.getUniformLocation(program, "u_time");
   const uResolution = gl.getUniformLocation(program, "u_resolution");
   const uMouse = gl.getUniformLocation(program, "u_mouse");
 
-  // --- Resize ---
+  // resize
   let dpr = Math.min(window.devicePixelRatio, 2);
   const resize = () => {
     dpr = Math.min(window.devicePixelRatio, 2);
@@ -188,14 +190,14 @@ const fluidBackground = () => {
   window.addEventListener("resize", resize);
   resize();
 
-  // --- Animation ---
+  // animate
   let animationId;
   const startTime = performance.now();
 
   const animate = () => {
     const elapsed = (performance.now() - startTime) * 0.001;
 
-    // Smooth, slow mouse tracking
+    // mousetrack
     smoothMouseX += (mouseX - smoothMouseX) * 0.05;
     smoothMouseY += (mouseY - smoothMouseY) * 0.05;
 
@@ -205,7 +207,7 @@ const fluidBackground = () => {
     animationId = requestAnimationFrame(animate);
   };
 
-  // Pause when tab hidden
+  // hiddentabpause
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
       cancelAnimationFrame(animationId);
@@ -217,9 +219,7 @@ const fluidBackground = () => {
   animationId = requestAnimationFrame(animate);
 };
 
-// ==========================================
-// ANIMATED PROGRESS BARS ON SCROLL
-// ==========================================
+// animateonscroll
 
 const observeSkills = () => {
   const skillsSection = document.querySelector(".skills");
@@ -229,22 +229,20 @@ const observeSkills = () => {
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          // Animate progress bars when section comes into view
           progressBars.forEach((bar, index) => {
             setTimeout(() => {
               const progress = bar.getAttribute("data-progress");
               bar.style.setProperty("--progress-width", `${progress}%`);
               bar.classList.add("animate");
-            }, index * 150); // Stagger animation for each bar
+            }, index * 150); // stagger
           });
 
-          // Unobserve after animation triggers once
           observer.unobserve(entry.target);
         }
       });
     },
     {
-      threshold: 0.3, // Trigger when 30% of section is visible
+      threshold: 0.3, // ~trigger
     },
   );
 
@@ -253,7 +251,7 @@ const observeSkills = () => {
   }
 };
 
-// Initialize when DOM is loaded
+// loadedDOMinit
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", () => {
     fluidBackground();
@@ -270,15 +268,13 @@ if (document.readyState === "loading") {
   initBlobMask();
 }
 
-// ==========================================
-// SIDE NAVIGATION — Active section tracking
-// ==========================================
+// sidenav
 
 const initSideNav = () => {
   const navItems = document.querySelectorAll(".side-nav__item");
   const sections = ["hero", "skills", "projects"];
 
-  // Click to scroll to section
+  // clickscroll
   navItems.forEach((item) => {
     item.addEventListener("click", () => {
       const sectionId = item.getAttribute("data-section");
@@ -289,7 +285,7 @@ const initSideNav = () => {
     });
   });
 
-  // Highlight active section on scroll
+  // highlightactive
   const updateActiveNav = () => {
     const scrollY = window.scrollY;
     const windowHeight = window.innerHeight;
@@ -299,7 +295,7 @@ const initSideNav = () => {
       const section = document.getElementById(id);
       if (section) {
         const rect = section.getBoundingClientRect();
-        // Section is active when its top is in the upper half of viewport
+
         if (rect.top <= windowHeight * 0.4) {
           currentSection = id;
         }
@@ -314,7 +310,7 @@ const initSideNav = () => {
     });
   };
 
-  // Header scroll styling
+  // headerscroll
   const header = document.querySelector(".header");
   const scrollIndicator = document.querySelector(".hero__scroll-indicator");
   const updateHeader = () => {
@@ -327,26 +323,28 @@ const initSideNav = () => {
     }
   };
 
-  window.addEventListener("scroll", () => {
-    updateActiveNav();
-    updateHeader();
-  }, { passive: true });
+  window.addEventListener(
+    "scroll",
+    () => {
+      updateActiveNav();
+      updateHeader();
+    },
+    { passive: true },
+  );
   updateActiveNav();
   updateHeader();
 };
 
-// ==========================================
-// SMOOTH SCROLL WITH ACCELERATION
-// ==========================================
+// smoothscroll
 
 const initSmoothScroll = () => {
   let currentScroll = window.scrollY;
   let targetScroll = window.scrollY;
   let isRunning = false;
-  const ease = 0.065; // lower = smoother/slower, higher = snappier
-  const multiplier = 1.4; // scroll distance multiplier for acceleration feel
+  const ease = 0.025;
+  const multiplier = 1.2;
 
-  // Intercept wheel and apply our own smooth scroll
+  // interceptwheel
   window.addEventListener(
     "wheel",
     (e) => {
@@ -368,7 +366,6 @@ const initSmoothScroll = () => {
   const smoothStep = () => {
     currentScroll += (targetScroll - currentScroll) * ease;
 
-    // Snap to target when close enough
     if (Math.abs(targetScroll - currentScroll) < 0.5) {
       currentScroll = targetScroll;
       window.scrollTo(0, currentScroll);
@@ -380,7 +377,7 @@ const initSmoothScroll = () => {
     requestAnimationFrame(smoothStep);
   };
 
-  // Keep in sync if user scrolls via scrollbar, keyboard, or side-nav click
+  // syncnavs
   window.addEventListener(
     "scroll",
     () => {
@@ -393,17 +390,16 @@ const initSmoothScroll = () => {
   );
 };
 
-// ==========================================
-// BLOB MASK — Morphing jelly edge on hero image
-// ==========================================
+// blobmask
 
 const initBlobMask = () => {
   const blobPath = document.getElementById("blob-path");
   if (!blobPath) return;
 
   const numPoints = 8;
-  const cx = 0.5, cy = 0.5;
-  const baseRadius = 0.40;
+  const cx = 0.5,
+    cy = 0.5;
+  const baseRadius = 0.4;
   const maxRadius = 0.495;
 
   const getPoints = (t) => {
@@ -423,7 +419,7 @@ const initBlobMask = () => {
     return pts;
   };
 
-  // Smooth closed Catmull-Rom → Cubic Bezier
+  // smoothclosed
   const buildPath = (pts) => {
     const n = pts.length;
     let d = `M ${pts[0].x} ${pts[0].y}`;

@@ -1,50 +1,4 @@
-/* Experience tags, styled like project tags */
-.experience__tags {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 8px;
-  margin-block-end: 20px;
-  text-align: left;
-}
-@media (max-width: 62.49875em) {
-  .experience__tags {
-    justify-content: center;
-    text-align: center;
-  }
-}
-
-.experience__tags span {
-  display: inline-block;
-  padding: 4px 14px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text1);
-  background-color: hsla(270, 60%, 55%, 0.15);
-  border: 1px solid hsla(270, 60%, 55%, 0.3);
-  border-radius: 100px;
-  transition:
-    background-color var(--transition),
-    border-color var(--transition);
-}
-.header__social--stroke svg {
-  height: 24px;
-  width: 24px;
-}
-footer .header__home {
-  font-size: 1rem;
-  font-size: clamp(1rem, 0.79rem + 0.89vw, 1.125rem);
-  line-height: 1.5;
-  position: static;
-  left: unset;
-  transform: none;
-  white-space: normal;
-}
-/* ==========================================
-   GLOBAL STYLES
-   ========================================== */
+/* globalstyles */
 
 :root {
   --bg-body: hsl(0, 0%, 8%);
@@ -94,9 +48,7 @@ body {
   -webkit-user-select: none;
 }
 
-/* ==========================================
-   FLUID BACKGROUND
-   ========================================== */
+/* fluidbackground */
 
 #fluid-bg {
   position: fixed;
@@ -120,9 +72,7 @@ footer {
   background-color: var(--bg-body);
 }
 
-/* ==========================================
-   TYPOGRAPHY
-   ========================================== */
+/* typography */
 
 h1,
 h2,
@@ -137,9 +87,13 @@ h3 {
   line-height: 1;
 }
 
+.header__title {
+  font-size: clamp(1.6rem, 0.56rem + 6.14vw, 2.6rem);
+  line-height: 1.2;
+}
+
 .header-xl {
-  font-size: 1.6rem;
-  font-size: clamp(1.8rem, 0.56rem + 6.14vw, 2.8rem);
+  font-size: clamp(1.8rem, 0.56rem + 6.14vw, 5.2rem);
   line-height: 1.2;
 }
 
@@ -219,9 +173,7 @@ svg {
   }
 }
 
-/* ==========================================
-   HEADER
-   ========================================== */
+/* header */
 
 .header {
   position: fixed;
@@ -328,9 +280,7 @@ svg {
   }
 }
 
-/* ==========================================
-   HERO
-   ========================================== */
+/* hero */
 
 .hero {
   min-height: 100vh;
@@ -532,9 +482,7 @@ h1 > span {
   }
 }
 
-/* ==========================================
-  SKILLS
-   ========================================== */
+/* skills */
 
 .skills {
   position: relative;
@@ -551,6 +499,11 @@ h1 > span {
 
 .skills__headline {
   margin-block-end: 40px;
+}
+
+.skills__headline--spaced {
+  margin-block-start: 0;
+  margin-block-end: 80px;
 }
 
 .skills__headline + .skills__grid + .skills__headline {
@@ -641,15 +594,13 @@ h1 > span {
   }
 }
 
-/* ==========================================
-   EXPERIENCE
-   ========================================== */
+/* experience */
 
 .experience__list {
   display: flex;
   flex-direction: column;
   gap: 40px;
-  margin-block-start: 40px;
+  margin-block-start: 10px;
 }
 
 .experience__item {
@@ -700,15 +651,12 @@ h1 > span {
   }
 }
 
-/* ==========================================
-   PROJECTS
-   ========================================== */
+/* projects */
 
 .projects {
   position: relative;
   z-index: 2;
   scroll-margin-top: 64px;
-  /* No background-color so fluid background shows */
 }
 
 .projects__wrapper {
@@ -743,6 +691,12 @@ h1 > span {
 .projects__image {
   width: 100%;
   height: auto;
+  transition: clip-path 1.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.projects__item:hover .projects__image,
+.projects__item:focus-within .projects__image {
+  clip-path: url(#blob-clip);
 }
 
 .projects__name {
@@ -751,6 +705,14 @@ h1 > span {
   font-weight: 700;
   text-transform: uppercase;
   margin-block-end: 7px;
+}
+
+.projects__description {
+  font-size: 1rem;
+  color: var(--text2);
+  line-height: 1.6;
+  max-width: 70ch;
+  margin-block-end: 16px;
 }
 
 .projects__tags {
@@ -843,6 +805,7 @@ h1 > span {
   }
 
   .projects__item:hover .projects__picture::after {
+    clip-path: url(#blob-clip);
     opacity: 0.5;
   }
 
@@ -882,9 +845,7 @@ h1 > span {
   }
 }
 
-/* ==========================================
-   CONTACT
-   ========================================== */
+/* contact */
 
 .contact {
   position: relative;
@@ -1072,17 +1033,59 @@ h1 > span {
   }
 }
 
-/* ==========================================
-   FOOTER
-   ========================================== */
+/* tags*/
+
+.experience__tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-block-end: 20px;
+  text-align: left;
+}
+@media (max-width: 62.49875em) {
+  .experience__tags {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+.experience__tags span {
+  display: inline-block;
+  padding: 4px 14px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text1);
+  background-color: hsla(270, 60%, 55%, 0.15);
+  border: 1px solid hsla(270, 60%, 55%, 0.3);
+  border-radius: 100px;
+  transition:
+    background-color var(--transition),
+    border-color var(--transition);
+}
+.header__social--stroke svg {
+  height: 24px;
+  width: 24px;
+}
+footer .header__home {
+  font-size: 1rem;
+  font-size: clamp(1rem, 0.79rem + 0.89vw, 1.125rem);
+  line-height: 1.5;
+  position: static;
+  left: unset;
+  transform: none;
+  white-space: normal;
+}
+
+/* footer */
 
 footer {
   padding-block: 60px;
 }
 
-/* ==========================================
-   SIDE NAVIGATION
-   ========================================== */
+/* side navigation */
 
 .side-nav {
   position: fixed;
@@ -1155,9 +1158,7 @@ footer {
   }
 }
 
-/* ==========================================
-   SCROLL SECTIONS
-   ========================================== */
+/* scroll sections */
 
 .hero {
   min-height: 100vh;
